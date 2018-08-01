@@ -2,6 +2,7 @@ FROM java:8
 
 MAINTAINER Erika Pauwels <erika.pauwels@tenforce.com>
 MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+MAINTAINER David Berger <dave.tuner@gmail.com>
 
 ENV ENABLE_INIT_DAEMON true
 ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
@@ -13,6 +14,11 @@ ENV HADOOP_VERSION=2.7
 COPY wait-for-step.sh /
 COPY execute-step.sh /
 COPY finish-step.sh /
+
+RUN mkdir /aux_lib
+COPY aux_lib/aws-java-sdk-core-1.11.372.jar /aux_lib
+COPY aux_lib/aws-java-sdk-s3-1.11.372.jar /aux_lib
+COPY aux_lib/hadoop-aws-2.7.3.jar /aux_lib
 
 #COPY bde-spark.css /css/org/apache/spark/ui/static/timeline-view.css
 
@@ -37,3 +43,8 @@ RUN chmod +x /wait-for-step.sh && chmod +x /execute-step.sh && chmod +x /finish-
 # Fix the value of PYTHONHASHSEED
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED 1
+
+RUN cp /spark/conf/spark-defaults.conf.template /spark/conf/spark-defaults.conf
+RUN echo "spark.driver.extraClassPath=/auxlib/*" >> /spark/conf/spark-defaults.conf
+RUN echo "spark.executor.extraClassPath=/auxlib/*" >> /spark/conf/spark-defaults.conf
+

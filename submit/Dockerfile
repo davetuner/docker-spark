@@ -1,7 +1,8 @@
-FROM bde2020/spark-base:2.3.1-hadoop2.7
+FROM davetuner/spark-base:2.3.1-hadoop2.7
 
 MAINTAINER Erika Pauwels <erika.pauwels@tenforce.com>
 MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+MAINTAINER David Berger <dave.tuner@gmail.com>
 
 ENV SPARK_MASTER_NAME spark-master
 ENV SPARK_MASTER_PORT 7077

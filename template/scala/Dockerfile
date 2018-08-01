@@ -1,7 +1,8 @@
-FROM bde2020/spark-submit:2.3.1-hadoop2.7
+FROM davetuner/spark-submit:2.3.1-hadoop2.7
 
 MAINTAINER Cecile Tonglet <cecile.tonglet@tenforce.com>
 MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+MAINTAINER David Berger <dave.tuner@gmail.com>
 
 RUN apt-get-install apt-transport-https
 
