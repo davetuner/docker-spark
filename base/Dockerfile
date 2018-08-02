@@ -45,6 +45,6 @@ RUN chmod +x /wait-for-step.sh && chmod +x /execute-step.sh && chmod +x /finish-
 ENV PYTHONHASHSEED 1
 
 RUN cp /spark/conf/spark-defaults.conf.template /spark/conf/spark-defaults.conf
-RUN echo "spark.driver.extraClassPath=/auxlib/*" >> /spark/conf/spark-defaults.conf
-RUN echo "spark.executor.extraClassPath=/auxlib/*" >> /spark/conf/spark-defaults.conf
+RUN echo "spark.driver.extraClassPath=/aux_lib/*" >> /spark/conf/spark-defaults.conf
+RUN echo "spark.executor.extraClassPath=/aux_lib/*" >> /spark/conf/spark-defaults.conf
 
