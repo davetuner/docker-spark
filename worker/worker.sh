@@ -1,8 +1,10 @@
 #!/bin/bash
+echo "SPARK_DAEMON_MEMORY=${SPARK_DAEMON_MEMORY}" >> /spark/conf/spark-env.sh
+echo "SPARK_WORKER_MEMORY=${SPARK_WORKER_MEMORY}" >> /spark/conf/spark-env.sh
 
 . "/spark/sbin/spark-config.sh"
 
-. "/spark/bin/load-spark-env.sh"
+. "/spark/bin/load-spark-env.sh"	
 
 mkdir -p $SPARK_WORKER_LOG
 

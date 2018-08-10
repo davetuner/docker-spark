@@ -13,6 +13,8 @@ if [ -f "${SPARK_APPLICATION_JAR_LOCATION}" ]; then
     /spark/bin/spark-submit \
         --class ${SPARK_APPLICATION_MAIN_CLASS} \
         --master ${SPARK_MASTER_URL} \
+        --conf "spark.driver.port=${SPARK_DRIVER_PORT}" \
+        --conf "spark.driver.host=${SPARK_DRIVER_HOST}" \
         ${SPARK_SUBMIT_ARGS} \
         ${SPARK_APPLICATION_JAR_LOCATION} ${SPARK_APPLICATION_ARGS}
 else
@@ -21,6 +23,8 @@ else
         echo "Passing arguments ${SPARK_APPLICATION_ARGS}"
         PYSPARK_PYTHON=python3 /spark/bin/spark-submit \
             --master ${SPARK_MASTER_URL} \
+            --conf "spark.driver.port=${SPARK_DRIVER_PORT}" \
+            --conf "spark.driver.host=${SPARK_DRIVER_HOST}" \
             ${SPARK_SUBMIT_ARGS} \
             ${SPARK_APPLICATION_PYTHON_LOCATION} ${SPARK_APPLICATION_ARGS}
     else

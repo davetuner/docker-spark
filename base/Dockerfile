@@ -44,7 +44,11 @@ RUN chmod +x /wait-for-step.sh && chmod +x /execute-step.sh && chmod +x /finish-
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED 1
 
+# Add all the aux jars in /aux_lib to the class path
 RUN cp /spark/conf/spark-defaults.conf.template /spark/conf/spark-defaults.conf
 RUN echo "spark.driver.extraClassPath=/aux_lib/*" >> /spark/conf/spark-defaults.conf
 RUN echo "spark.executor.extraClassPath=/aux_lib/*" >> /spark/conf/spark-defaults.conf
+# Set spark memory
+RUN cp /spark/conf/spark-env.sh.template /spark/conf/spark-env.sh
+
 

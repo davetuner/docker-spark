@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "SPARK_DAEMON_MEMORY=${SPARK_DAEMON_MEMORY}" >> /spark/conf/spark-env.sh
 
 export SPARK_MASTER_HOST=`hostname`
 
