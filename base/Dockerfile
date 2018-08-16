@@ -16,9 +16,15 @@ COPY execute-step.sh /
 COPY finish-step.sh /
 
 RUN mkdir /aux_lib
+# aws s3 support
 COPY aux_lib/aws-java-sdk-core-1.11.372.jar /aux_lib
 COPY aux_lib/aws-java-sdk-s3-1.11.372.jar /aux_lib
 COPY aux_lib/hadoop-aws-2.7.3.jar /aux_lib
+# azure blob storage support
+COPY aux_lib/hadoop-azure-2.7.7.jar /aux_lib
+COPY aux_lib/azure-storage-2.0.0.jar /aux_lib
+# gcs support
+COPY aux_lib/gcs-connector-latest-hadoop2.jar /aux_lib
 
 #COPY bde-spark.css /css/org/apache/spark/ui/static/timeline-view.css
 
@@ -48,7 +54,8 @@ ENV PYTHONHASHSEED 1
 RUN cp /spark/conf/spark-defaults.conf.template /spark/conf/spark-defaults.conf
 RUN echo "spark.driver.extraClassPath=/aux_lib/*" >> /spark/conf/spark-defaults.conf
 RUN echo "spark.executor.extraClassPath=/aux_lib/*" >> /spark/conf/spark-defaults.conf
-# Set spark memory
+# Create spark env and set hadoop conf dir
 RUN cp /spark/conf/spark-env.sh.template /spark/conf/spark-env.sh
+RUN echo "HADOOP_CONF_DIR=/hadoop" >> /spark/conf/spark-env.sh
 
 
