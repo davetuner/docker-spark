@@ -12,5 +12,4 @@ ENV SPARK_MASTER_LOG /spark/logs
 
 EXPOSE 8080 7077 6066
 
-CMD ["/bin/cat", "/spark/conf/spark-env.sh"]
 CMD ["/bin/bash", "/master.sh"]
