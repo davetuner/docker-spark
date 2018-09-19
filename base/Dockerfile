@@ -23,6 +23,9 @@ COPY aux_lib/hadoop-aws-2.7.3.jar /aux_lib
 # azure blob storage support
 COPY aux_lib/hadoop-azure-2.7.7.jar /aux_lib
 COPY aux_lib/azure-storage-2.0.0.jar /aux_lib
+# Fix azure 
+COPY aux_lib/jets3t-0.9.4.jar /aux_lib
+COPY aux_lib/jetty-util-6.1.25.jar /aux_lib
 # gcs support
 COPY aux_lib/gcs-connector-latest-hadoop2.jar /aux_lib
 
