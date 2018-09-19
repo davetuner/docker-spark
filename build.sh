@@ -6,7 +6,7 @@ TAG=2.3.1-hadoop2.7
 
 build() {
     NAME=$1
-    IMAGE=davetuner/spark-$NAME:$TAG
+    IMAGE=transformersreg11.azurecr.io/spark-$NAME:$TAG
     cd $([ -z "$2" ] && echo "./$NAME" || echo "$2")
     echo '--------------------------' building $IMAGE in $(pwd)
     docker build -t $IMAGE .
