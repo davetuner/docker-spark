@@ -9,6 +9,8 @@ export SPARK_HOME=/spark
 . "/spark/sbin/spark-config.sh"
 . "/spark/bin/load-spark-env.sh"
 
+ln -sf /hive/hive-site.xml /spark/conf/hive-site.xml
+
 if [ -f "${SPARK_APPLICATION_JAR_LOCATION}" ]; then
     echo "Submit application ${SPARK_APPLICATION_JAR_LOCATION} with main class ${SPARK_APPLICATION_MAIN_CLASS} to Spark master ${SPARK_MASTER_URL}"
     echo "Passing arguments ${SPARK_APPLICATION_ARGS}"

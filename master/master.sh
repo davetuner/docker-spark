@@ -9,6 +9,8 @@ export SPARK_MASTER_HOST=`hostname`
 
 mkdir -p $SPARK_MASTER_LOG
 
+ln -sf /hive/hive-site.xml /spark/conf/hive-site.xml
+
 export SPARK_HOME=/spark
 
 ln -sf /dev/stdout $SPARK_MASTER_LOG/spark-master.out
